@@ -1,0 +1,87 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: lambda-postgres
+app: server-app
+provider:
+  name: aws
+  runtime: nodejs10.x
+  memorySize: 128
+  timeout: 30
+  stage: dev
+  region: eu-west-1
+functions:
+  graphql:
+    handler: handler.handler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors: true
+  playground:
+    handler: handler.handler
+    events:
+      - http:
+          path: playground
+          method: get
+  hello:
+    handler: handler.hello
+    events:
+    - http:
+        path: hello
+        method: get
+        cors: true
+  getTodo:
+    handler: handler.getTodo
+    events:
+      - http:
+          path: todo/{id}
+          method: get
+          cors: true
+  getAllTodos:
+    handler: handler.getAllTodos
+    events:
+      - http:
+          path: todo
+          method: get
+          cors: true
+  createTodo:
+    handler: handler.createTodo
+    events:
+      - http:
+          path: todo
+          method: post
+          cors: true
+  updateTodo:
+    handler: handler.updateTodo
+    events:
+      - http:
+          path: todo/{id}
+          method: put
+          cors: true
+  deleteTodo:
+    handler: handler.deleteTodo
+    events:
+      - http:
+          path: todo/{id}
+          method: delete
+          cors: true
+plugins:
+  - serverless-offline
+  - serverless-webpack
+  - serverless-offline
+custom:
+  webpack:
+    webpackConfig: webpack.config.js
+    includeModules: true
+
