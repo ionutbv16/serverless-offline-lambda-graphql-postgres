@@ -22,9 +22,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.3.0",
     "graphql-playground-middleware-express": "^1.7.12",
-    "webpack": "^4.40.2",
+    "webpack": "^5.75.0",
     "webpack-node-externals": "^1.7.2"
   }
 }
